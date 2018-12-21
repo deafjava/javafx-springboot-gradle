@@ -1,0 +1,10 @@
+#title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F70;
+    -fx-text-alignment: center;
+    -fx-padding: 20px;
+}
+.hBox {
+    -fx-padding: 20px;
+}

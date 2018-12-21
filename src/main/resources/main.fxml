@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="224.0" prefWidth="421.0"
+            xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="com.luxoft.javafx.controller.MainController">
+    <children>
+        <VBox fx:id="refBox">
+            <children>
+                <Label fx:id="title" alignment="CENTER" text="Resistance Simplifier"/>
+                <HBox styleClass="hBox" alignment="CENTER">
+                    <Label alignment="CENTER" text="R1: "/>
+                    <TextField inputMethodRequests="" alignment="CENTER_LEFT" styleClass="resistanceInput"/>
+
+                </HBox>
+                <HBox/>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
