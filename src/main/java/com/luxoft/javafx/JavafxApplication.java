@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.io.IOException;
+
 @SpringBootApplication
 public class JavafxApplication extends Application {
 
@@ -22,7 +24,7 @@ public class JavafxApplication extends Application {
     private Parent rootNode;
 
     @Override
-    public void init() throws Exception {
+    public void init() throws IOException {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(JavafxApplication.class);
         context = builder.run(getParameters().getRaw().toArray(new String[0]));
 
@@ -32,7 +34,7 @@ public class JavafxApplication extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 
         Scene scene = new Scene(rootNode, visualBounds.getWidth(), visualBounds.getHeight());
@@ -41,15 +43,15 @@ public class JavafxApplication extends Application {
 
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
-        primaryStage.setMaxWidth(700);
-        primaryStage.setMaxHeight(500);
+        primaryStage.setWidth(700);
+        primaryStage.setHeight(500);
 
         primaryStage.show();
         primaryStage.centerOnScreen();
     }
 
     @Override
-    public void stop() throws Exception {
+    public void stop() {
         context.close();
     }
 }

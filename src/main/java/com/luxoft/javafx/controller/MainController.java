@@ -1,25 +1,66 @@
 package com.luxoft.javafx.controller;
 
-import lombok.extern.slf4j.Slf4j;
+import com.luxoft.javafx.service.ResistanceInputElement;
+import com.luxoft.javafx.service.exception.MinimumResistancesInputReachedException;
+import com.luxoft.javafx.utils.ReadAndCalculateUtils;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import org.springframework.stereotype.Controller;
 
-@Slf4j
+import java.util.Set;
+
+import static com.luxoft.javafx.service.ResistanceInputElement.RESIS_SELECTOR;
+
 @Controller
 public class MainController {
 
-//    @FXML
-//    public ComboBox<Country> countriesComboBox;
-//
-//    @Autowired
-//    private CountryService countryService;
-//
-//    @FXML
-//    public void initialize() {
-//        countriesComboBox.setConverter(new CountryNameStringConverter());
-//        countriesComboBox.setItems(FXCollections.observableArrayList(countryService.getAllCountries()));
-//        countriesComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            String old = Optional.ofNullable(oldValue).orElse(new Country("BR", "Brazil")).getName();
-//            log.info("Old: " + old + ", New: " + newValue.getName());
-//        });
-//    }
+
+    @FXML
+    public VBox refBox;
+
+    @FXML
+    public Label resultResistance;
+
+    @FXML
+    public Button addR;
+
+    @FXML
+    public Button removeR;
+
+    @FXML
+    public void initialize() {
+
+        Set<Node> rs = refBox.lookupAll(RESIS_SELECTOR);
+
+        rs.stream()
+                .filter(node -> node instanceof TextField)
+                .forEach(node -> node.setOnKeyReleased(event -> ReadAndCalculateUtils.asParallel(refBox, resultResistance)));
+
+        addR.setOnMouseClicked(e -> {
+
+            ResistanceInputElement.create(refBox, resultResistance);
+
+            ReadAndCalculateUtils.asParallel(refBox, resultResistance);
+        });
+
+        removeR.setOnMouseClicked(event -> {
+
+            try {
+                ResistanceInputElement.remove(refBox);
+
+                ReadAndCalculateUtils.asParallel(refBox, resultResistance);
+
+            } catch (MinimumResistancesInputReachedException e) {
+                Alert dialogoInfo = new Alert(Alert.AlertType.WARNING);
+                dialogoInfo.setTitle("Ooops!");
+                dialogoInfo.setHeaderText(e.getMessage());
+                dialogoInfo.showAndWait();
+            }
+        });
+    }
 }
