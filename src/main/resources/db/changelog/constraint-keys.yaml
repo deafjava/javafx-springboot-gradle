@@ -1,0 +1,26 @@
+databaseChangeLog:
+- changeSet:
+    id: ConstraintForeignKeys
+    author: Caio Cascaes
+    changes:
+    - addForeignKeyConstraint:
+          baseColumnNames: id_component
+          baseTableName: electronic_calculation_components
+          constraintName: fk_components
+          onDelete: NO ACTION
+          referencedColumnNames: id
+          referencedTableName: electronic_component
+    - addForeignKeyConstraint:
+          baseColumnNames: id_calculation
+          baseTableName: electronic_calculation_components
+          constraintName: fk_calculation_components
+          onDelete: NO ACTION
+          referencedColumnNames: id
+          referencedTableName: electronic_calculation
+    - addForeignKeyConstraint:
+          baseColumnNames: result
+          baseTableName: electronic_calculation
+          constraintName: fk_result_electronic_component
+          onDelete: NO ACTION
+          referencedColumnNames: id
+          referencedTableName: electronic_component

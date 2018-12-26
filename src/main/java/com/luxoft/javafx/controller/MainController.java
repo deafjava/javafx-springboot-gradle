@@ -1,8 +1,8 @@
 package com.luxoft.javafx.controller;
 
 import com.luxoft.javafx.assembler.ResistanceInputElement;
-import com.luxoft.javafx.service.ResistanceParallelCalculationService;
 import com.luxoft.javafx.service.ResistanceListResultsService;
+import com.luxoft.javafx.service.ResistanceParallelCalculationService;
 import com.luxoft.javafx.service.exception.MinimumResistancesInputReachedException;
 import com.luxoft.javafx.utils.ReadAndCalculateUtils;
 import javafx.fxml.FXML;
@@ -81,5 +81,7 @@ public class MainController {
             resistanceParallelCalculationService.register(refBox, resultResistance);
             resistanceListResultsService.update(historyCalculation);
         });
+
+        resistanceListResultsService.update(historyCalculation);
     }
 }

@@ -48,8 +48,6 @@ databaseChangeLog:
             type: int
             constraints:
               nullable: false
-              foreignKeyName: fk_result_electronic_component
-              references: electronic_component(id)
     - createTable:
         tableName: electronic_calculation_components
         columns:
@@ -65,14 +63,13 @@ databaseChangeLog:
             type: int
             constraints:
               nullable: false
-              foreignKeyName: fk_calculation_components
-              references: electronic_calculation(id)
         - column:
             name: id_component
             type: int
             constraints:
               nullable: false
-              foreignKeyName: fk_components
-              references: electronic_component(id)
+
 - include:
     file: db/changelog/unique-fields.yaml
+- include:
+    file: db/changelog/constraint-keys.yaml

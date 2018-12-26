@@ -6,8 +6,8 @@ spring:
       hibernate:
         format_sql: true
   datasource:
-    url: jdbc:h2:mem:testdb;MODE=MYSQL
-#    username: root
-#    password: j4v4fx
-#    driverClassName: org.mariadb.jdbc.Driver
-#    url: jdbc:mariadb://localhost:3307/javafx
+#    url: jdbc:h2:mem:testdb;MODE=MYSQL
+    username: root
+    password: j4v4fx
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3307/javafx
