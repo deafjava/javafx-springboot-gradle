@@ -1,4 +1,4 @@
-package com.luxoft.javafx.service;
+package com.luxoft.javafx.assembler;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

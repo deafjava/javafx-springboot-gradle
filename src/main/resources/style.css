@@ -16,9 +16,12 @@
     -fx-text-fill: #333;
     -fx-text-alignment: center;
 }
-#removeR, #addR {
+#removeR, #addR, #saveR {
 
     -fx-padding: 15px;
     -fx-border-insets: 5px;
     -fx-background-insets: 5px;
+}
+.resultLabel {
+    -fx-padding: 20px;
 }

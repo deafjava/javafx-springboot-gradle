@@ -1,4 +1,4 @@
-package com.luxoft.javafx.service;
+package com.luxoft.javafx.assembler;
 
 import com.luxoft.javafx.service.exception.MinimumResistancesInputReachedException;
 import com.luxoft.javafx.utils.ReadAndCalculateUtils;
@@ -41,6 +41,7 @@ public class ResistanceInputElement {
         refBox.getChildren().add(currentRs.size() + 1, hBox);
 
     }
+
 
 
 }

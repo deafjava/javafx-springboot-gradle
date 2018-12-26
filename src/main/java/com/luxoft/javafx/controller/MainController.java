@@ -1,6 +1,8 @@
 package com.luxoft.javafx.controller;
 
-import com.luxoft.javafx.service.ResistanceInputElement;
+import com.luxoft.javafx.assembler.ResistanceInputElement;
+import com.luxoft.javafx.service.ResistanceParallelCalculationService;
+import com.luxoft.javafx.service.ResistanceListResultsService;
 import com.luxoft.javafx.service.exception.MinimumResistancesInputReachedException;
 import com.luxoft.javafx.utils.ReadAndCalculateUtils;
 import javafx.fxml.FXML;
@@ -10,15 +12,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.Set;
 
-import static com.luxoft.javafx.service.ResistanceInputElement.RESIS_SELECTOR;
+import static com.luxoft.javafx.assembler.ResistanceInputElement.RESIS_SELECTOR;
 
 @Controller
 public class MainController {
-
 
     @FXML
     public VBox refBox;
@@ -31,6 +33,18 @@ public class MainController {
 
     @FXML
     public Button removeR;
+
+    @FXML
+    public Button saveR;
+
+    @FXML
+    public VBox historyCalculation;
+
+    @Autowired
+    private ResistanceParallelCalculationService resistanceParallelCalculationService;
+
+    @Autowired
+    private ResistanceListResultsService resistanceListResultsService;
 
     @FXML
     public void initialize() {
@@ -61,6 +75,11 @@ public class MainController {
                 dialogoInfo.setHeaderText(e.getMessage());
                 dialogoInfo.showAndWait();
             }
+        });
+
+        saveR.setOnMouseClicked(event -> {
+            resistanceParallelCalculationService.register(refBox, resultResistance);
+            resistanceListResultsService.update(historyCalculation);
         });
     }
 }

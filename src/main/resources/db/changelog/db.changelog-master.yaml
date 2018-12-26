@@ -1,0 +1,78 @@
+databaseChangeLog:
+- changeSet:
+    id: ElectronicComponent
+    author: Caio Cascaes
+    changes:
+    - createTable:
+        tableName: electronic_component
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: value
+            type: double
+            constraints:
+              nullable: false
+        - column:
+            name: type
+            type: varchar(100)
+            constraints:
+              nullable: false
+    - createTable:
+        tableName: electronic_calculation
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: type
+            type: varchar(100)
+            constraints:
+              nullable: false
+        - column:
+            name: mode
+            type: varchar(100)
+            constraints:
+              nullable: false
+        - column:
+            name: result
+            type: int
+            constraints:
+              nullable: false
+              foreignKeyName: fk_result_electronic_component
+              references: electronic_component(id)
+    - createTable:
+        tableName: electronic_calculation_components
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: id_calculation
+            type: int
+            constraints:
+              nullable: false
+              foreignKeyName: fk_calculation_components
+              references: electronic_calculation(id)
+        - column:
+            name: id_component
+            type: int
+            constraints:
+              nullable: false
+              foreignKeyName: fk_components
+              references: electronic_component(id)
+- include:
+    file: db/changelog/unique-fields.yaml

@@ -1,6 +1,6 @@
 package com.luxoft.javafx.utils;
 
-import com.luxoft.javafx.service.ResistanceInputElement;
+import com.luxoft.javafx.assembler.ResistanceInputElement;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import lombok.experimental.UtilityClass;
 import org.springframework.util.StringUtils;
 
+import java.util.Locale;
 import java.util.Set;
 
 @UtilityClass
@@ -32,6 +33,6 @@ public class ReadAndCalculateUtils {
 
             result = ResistanceCalculatorUtils.parallel(result, r);
         }
-        resultRef.setText(String.format("%.2f", result));
+        resultRef.setText(String.format(Locale.ENGLISH, "%.2f", result));
     }
 }

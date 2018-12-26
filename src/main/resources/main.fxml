@@ -7,32 +7,37 @@
             xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="com.luxoft.javafx.controller.MainController">
     <content>
         <AnchorPane>
-            <children>
-                <VBox fx:id="refBox">
-                    <children>
-                        <HBox fx:id="blockResult" alignment="CENTER" styleClass="hBox">
-                            <Label fx:id="title" alignment="CENTER" text="Resistance Parallel Simplifier Result: "/>
-                            <Label fx:id="resultResistance" alignment="CENTER_LEFT" text="0.00"/>
-                            <Label fx:id="unit" alignment="CENTER_LEFT" text="Ω"/>
-                        </HBox>
-                        <HBox alignment="CENTER" styleClass="hBox">
-                            <Label alignment="CENTER" text="R1: "/>
-                            <TextField alignment="CENTER_LEFT" styleClass="resistanceInput"/>
+            <HBox>
+                <children>
+                    <VBox fx:id="refBox">
+                        <children>
+                            <HBox fx:id="blockResult" alignment="CENTER" styleClass="hBox">
+                                <Label fx:id="title" alignment="CENTER" text="Resistance Parallel Simplifier Result: "/>
+                                <Label fx:id="resultResistance" alignment="CENTER_LEFT" text="0.00"/>
+                                <Label fx:id="unit" alignment="CENTER_LEFT" text="Ω"/>
+                            </HBox>
+                            <HBox alignment="CENTER" styleClass="hBox">
+                                <Label alignment="CENTER" text="R1: "/>
+                                <TextField alignment="CENTER_LEFT" styleClass="resistanceInput"/>
 
-                        </HBox>
-                        <HBox alignment="CENTER" styleClass="hBox">
-                            <Label alignment="CENTER" text="R2: "/>
-                            <TextField alignment="CENTER_LEFT" styleClass="resistanceInput"/>
+                            </HBox>
+                            <HBox alignment="CENTER" styleClass="hBox">
+                                <Label alignment="CENTER" text="R2: "/>
+                                <TextField alignment="CENTER_LEFT" styleClass="resistanceInput"/>
 
-                        </HBox>
-                        <HBox alignment="CENTER" styleClass="hBox">
-                            <Button fx:id="removeR" prefWidth="100" styleClass="btn" text="-"/>
-                            <Button fx:id="addR" prefWidth="100" styleClass="btn" text="+"/>
-                        </HBox>
-                    </children>
-                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER" styleClass="hBox">
+                                <Button fx:id="removeR" prefWidth="100" styleClass="btn" text="-"/>
+                                <Button fx:id="addR" prefWidth="100" styleClass="btn" text="+"/>
+                                <Button fx:id="saveR" prefWidth="100" styleClass="btn" text="Save"/>
+                            </HBox>
+                        </children>
+                    </VBox>
+                    <VBox fx:id="historyCalculation">
 
-            </children>
+                    </VBox>
+                </children>
+            </HBox>
         </AnchorPane>
     </content>
 </ScrollPane>

@@ -3,5 +3,4 @@
 
 ### TODOs
 
-* Read from DB
 * JafaFX UI Tests
