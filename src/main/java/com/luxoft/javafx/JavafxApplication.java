@@ -18,6 +18,7 @@ public class JavafxApplication extends Application {
 
 
     private static final String MAIN = "/main.fxml";
+    private static final String STYLE = "/style.css";
 
     private ConfigurableApplicationContext context;
 
@@ -27,7 +28,7 @@ public class JavafxApplication extends Application {
     public void init() throws IOException {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(JavafxApplication.class);
         context = builder.run(getParameters().getRaw().toArray(new String[0]));
-
+        builder.headless(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(MAIN));
         loader.setControllerFactory(context::getBean);
         rootNode = loader.load();
@@ -41,7 +42,7 @@ public class JavafxApplication extends Application {
 
         primaryStage.setScene(scene);
 
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(STYLE).toExternalForm());
 
         primaryStage.setWidth(700);
         primaryStage.setHeight(500);

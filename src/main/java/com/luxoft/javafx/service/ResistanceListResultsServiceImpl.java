@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import static com.luxoft.javafx.model.domain.CalculationMode.PARALLEL;
@@ -43,12 +44,12 @@ public class ResistanceListResultsServiceImpl implements ResistanceListResultsSe
                     StringBuilder data = new StringBuilder();
                     String ending = ec.getType().getUnit().getEnding();
                     ec.getComponents().forEach(r -> {
-                        data.append(r.getValue());
+                        data.append(String.format(Locale.ENGLISH, "%.2f", r.getValue()));
                         data.append(ending);
                         data.append(", ");
                     });
                     data.append("turns to ");
-                    data.append(ec.getResult().getValue());
+                    data.append(String.format(Locale.ENGLISH, "%.2f", ec.getResult().getValue()));
                     data.append(ending);
                     Label l = new Label(data.toString());
                     l.setId(String.valueOf(ec.getId()));
